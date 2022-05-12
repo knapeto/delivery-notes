@@ -39,7 +39,6 @@ const StyledTypography = styled(Typography)`
 
 const UserForm = (props) => {
   const { errors } = props;
-  const identity = useGetIdentity();
 
   return (
     <div>

@@ -3,7 +3,6 @@ import { Button, FormControl, InputLabel, OutlinedInput } from "@mui/material";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Paper from "@mui/material/Paper";
-import SaveIcon from "@material-ui/icons/Save";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -16,7 +15,7 @@ import { url } from "../../";
 import { useGetDeliveryNotesLazyQuery } from "../../@generated/hooks";
 import { useState } from "react";
 
-export const DeliveryNotesList = (props: any) => {
+export const DeliveryNotesList = () => {
   const [search, setSearch] = useState("5006905");
 
   const [getDeliveryNotes, { data }] = useGetDeliveryNotesLazyQuery();
