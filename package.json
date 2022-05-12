@@ -5,7 +5,7 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "dev": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --max_old_space_size=4096 build && mv build dist",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --max_old_space_size=4096 build",
     "test": "echo 'skip'",
     "lint": "echo 'skip'",
     "eject": "react-scripts eject",
