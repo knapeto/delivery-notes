@@ -1,0 +1,38 @@
+schema: './src/graphql-schema.json'
+overwrite: true
+# Format files
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+generates:
+  # Get schemas from server
+  src/@generated/schemas.tsx:
+    documents: ['./src/**/*.mutation.graphql', './src/**/*.query.graphql']
+    plugins:
+      - typescript
+
+  # Create operations based on queries
+  src/@generated/operations.tsx:
+    documents: ['./src/**/*.mutation.graphql', './src/**/*.query.graphql']
+    preset: import-types
+    presetConfig:
+      typesPath: ./schemas
+    plugins:
+      - typescript-operations
+
+  # 1. Export GraphQL documents
+  # 2. React interface
+  src/@generated/hooks.tsx:
+    documents: ['./src/**/*.mutation.graphql', './src/**/*.query.graphql']
+    preset: import-types
+    presetConfig:
+      typesPath: ./operations
+    plugins:
+      - typescript-react-apollo
+    config:
+      # Optionals
+      withHOC: false
+      withComponent: false
+      withHooks: true

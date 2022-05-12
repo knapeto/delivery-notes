@@ -1,0 +1,21 @@
+query getDeliveryNotes($search: String!) {
+  getDeliveryNotes(search: $search) {
+    Sklad
+    Klient
+    KlientNazev
+    FakturacniMistoNazev
+    DodaciMisto_Kod
+    DodaciMisto_Nazev
+    DodaciMisto_Ulice
+    DodaciMisto_PSC
+    DodaciMisto_Mesto
+    DodaciMisto_Zeme
+    CisloDL
+    CisloObjKlienta
+    CisloObjZakaznika
+    InterniCisloDokladuProTisk
+    DatumDodani
+    Doprava_Linka
+    Doprava_CODE
+  }
+}

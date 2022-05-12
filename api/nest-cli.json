@@ -1,0 +1,13 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "plugins": ["@nestjs/graphql"],
+    "assets": [
+      {
+        "include": "../resources/**/*",
+        "outDir": "dist/resources"
+      }
+    ]
+  }
+}

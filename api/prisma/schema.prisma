@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../src/@generated/type-graphql"
+}
+
+generator nest {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "../src/@generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(uuid())
+  /// @TypeGraphQL.omit(output: true)
+  password       String?
+  /// @TypeGraphQL.omit(output: true)
+  tokenSalt      String    @default(uuid())
+  firstName      String?
+  lastName       String?
+  email          String
+  createdAt      DateTime  @default(now())
+  isAd           Boolean
+  presetPassword Boolean?
+  deletedAt      DateTime?
+  isAdmin        Boolean   @default(false)
+}
