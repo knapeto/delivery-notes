@@ -21,14 +21,18 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: npm install
+      - name: install admin
         run: |
-          cd ./admin && yarn install && cd ../api && yarn install
+          cd ./admin && yarn install
+
+      - name: install api
+        run: |
+          cd ./api && yarn install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: node-app
+          name: delivery-note
           path: .
 
   deploy:
@@ -42,7 +46,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: node-app
+          name: delivery-note
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
