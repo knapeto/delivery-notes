@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "start": "PORT=8080 SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "dev": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --max_old_space_size=4096 build",
     "test": "echo 'skip'",

@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:knapeto/delivery-notes.git",
   "author": "Knapeto <knapeto@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "cd ./admin && yarn start"
+  }
 }
