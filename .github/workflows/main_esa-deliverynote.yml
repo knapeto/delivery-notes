@@ -23,7 +23,7 @@ jobs:
 
       - name: npm install
         run: |
-          yarn install
+          cd ./admin && yarn install && cd ../api && yarn install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
