@@ -9,7 +9,8 @@ COPY . .
 
 # admin
 RUN ls
-RUN cd ./admin && yarn install && yarn start
+RUN cd ./admin
+RUN yarn install
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
