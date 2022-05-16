@@ -7,6 +7,8 @@ WORKDIR /app
 # Bundle app source
 COPY . .
 
+RUN apk add gcc libc-dev g++ libffi-dev libxml2 unixodbc-dev mariadb-dev postgresql-dev
+
 # admin
 RUN ls
 RUN cd ./admin
