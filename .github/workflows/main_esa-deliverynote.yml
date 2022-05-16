@@ -12,7 +12,6 @@ on:
 permissions:
   contents: read
   packages: write
-  pull-requests: write
 
 jobs:
   build:
@@ -57,9 +56,6 @@ jobs:
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
-        env:
-          DOCKER_REGISTRY_SERVER_USERNAME: ${{ github.actor }}
-          DOCKER_REGISTRY_SERVER_PASSWORD: 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
         with:
           app-name: "ESA-DeliveryNote"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
