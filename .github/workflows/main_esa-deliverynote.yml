@@ -61,7 +61,7 @@ jobs:
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@0b651ed7546ecfc75024011f76944cb9b381ef1e
-          with:
-            app-name: "ESA-DeliveryNote"
-            publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
-            images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
+        with:
+          app-name: "ESA-DeliveryNote"
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
+          images: "ghcr.io/${{ env.REPO }}:${{ github.sha }}"
