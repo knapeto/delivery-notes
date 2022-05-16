@@ -6,6 +6,6 @@
   "author": "Knapeto <knapeto@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd ./admin && yarn install && yarn start"
+    "start": "cd ./admin && yarn config set cache-folder ../../.yarn && yarn install && yarn start"
   }
 }
