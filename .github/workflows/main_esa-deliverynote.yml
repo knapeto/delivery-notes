@@ -57,6 +57,8 @@ jobs:
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           app-name: "ESA-DeliveryNote"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
