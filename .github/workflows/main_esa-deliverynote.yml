@@ -25,6 +25,14 @@ jobs:
         run: |
           yarn install
 
+      - name: admin init
+        run: |
+          cd ./admin && yarn install
+
+      - name: api init
+        run: |
+          cd ./admin && yarn install
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
