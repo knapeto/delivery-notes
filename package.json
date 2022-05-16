@@ -6,7 +6,7 @@
   "author": "Knapeto <knapeto@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn config set cache-folder ../.yarn && yarn && concurrently \"yarn admin\" \"yarn api\"",
+    "start": "yarn config set cache-folder ../.yarn && yarn && concurrently \"yarn serve\" \"yarn admin\" \"yarn api\"",
     "admin": "cd ./admin && yarn install && yarn dev",
     "api": "cd ./api && yarn install && yarn dev",
     "serve": "python -m SimpleHTTPServer 8080"
