@@ -1,13 +1,14 @@
-FROM node:14
+FROM node:14-alpine
 LABEL maintainer="Azure App Services Container Images <appsvc-images@microsoft.com>"
 
 # Create app directory
 WORKDIR /app
 
+RUN apk update
+RUN apk add gcc libc-dev g++ libffi-dev libxml2 unixodbc-dev postgresql-dev
+
 # Bundle app source
 COPY . .
-
-RUN apk add gcc libc-dev g++ libffi-dev libxml2 unixodbc-dev mariadb-dev postgresql-dev
 
 # admin
 RUN ls
