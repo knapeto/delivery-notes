@@ -58,7 +58,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         env:
-          GITHUB_TOKEN: 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
+          CR_PAT: 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
           REGISTRY_USERNAME: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
