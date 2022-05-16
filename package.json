@@ -6,6 +6,6 @@
   "author": "Knapeto <knapeto@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "echo 'skip'"
+    "start": "cd ./admin && yarn install && yarn start"
   }
 }
