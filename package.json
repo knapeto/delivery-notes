@@ -6,6 +6,6 @@
   "author": "Knapeto <knapeto@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd ./admin && yarn start"
+    "start": "cd ./admin && yarn && yarn start"
   }
 }
