@@ -59,6 +59,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         env:
           GITHUB_TOKEN: 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
+          REGISTRY_USERNAME: ${{ github.actor }}
+          REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           app-name: "ESA-DeliveryNote"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
