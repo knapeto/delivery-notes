@@ -58,9 +58,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         env:
-          CR_PAT: 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
-          REGISTRY_USERNAME: ${{ github.actor }}
-          REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_REGISTRY_SERVER_USERNAME: ${{ github.actor }}
+          DOCKER_REGISTRY_SERVER_PASSWORD: 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
         with:
           app-name: "ESA-DeliveryNote"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_46BC30DD788146F0BE083C37C6AB57EF }}
