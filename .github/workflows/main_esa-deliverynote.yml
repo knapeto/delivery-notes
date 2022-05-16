@@ -33,6 +33,12 @@ jobs:
       #   run: |
       #     cd ./admin && yarn install
 
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: delivery-note
+          path: .
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
