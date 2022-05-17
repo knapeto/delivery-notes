@@ -1,0 +1,30 @@
+module.exports = {
+  apps: [
+    {
+      name: "backend",
+      script: "yarn backend",
+      instances: 1,
+      listen_timeout: 100,
+      max_memory_restart: "8G",
+      max_restarts: 1,
+      kill_timeout: 100,
+      error_file: "./backend-error.log",
+      log_file: "./backend-log.log",
+      kill_timeout: 100,
+      wait_ready: true,
+    },
+    {
+      name: "frontend",
+      script: "yarn frontend",
+      instances: 1,
+      listen_timeout: 100,
+      max_memory_restart: "8G",
+      max_restarts: 1,
+      error_file: "./frontend-error.log",
+      log_file: "./frontend-log.log",
+      time: true,
+      kill_timeout: 100,
+      wait_ready: true,
+    },
+  ],
+};
