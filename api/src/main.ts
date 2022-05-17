@@ -49,6 +49,6 @@ async function bootstrap() {
   );
   app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 10 }));
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
