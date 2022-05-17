@@ -30,7 +30,6 @@ export class DeliveryNotesController {
 
     return new Promise((resolve, reject) => {
       writer.on('finish', () => {
-        console.log('aaaa');
         const file = createReadStream(fileName);
         file.pipe(res);
       });
