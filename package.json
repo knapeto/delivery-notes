@@ -9,7 +9,7 @@
     "restart-after-deploy": "pm2 startOrRestart ecosystem.config.js",
     "update": "pm2 deploy ecosystem.config.js staging update",
     "reload-all": "pm2 deploy ecosystem.config.js staging exec \"pm2 reload all\"",
-    "backend": "pwd && cd ./api && yarn start",
+    "backend": "pwd && cd ./api && yarn dev",
     "frontend": "pwd && cd ./admin && yarn build && yarn start",
     "deps": "cd backend && yarn && cd ../frontend && yarn"
   },
