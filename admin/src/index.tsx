@@ -11,7 +11,11 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(timezone);
 dayjs.extend(utc);
 
-export const url = "http://localhost:8080/api";
+export const url = window.location.href.includes(
+  "deliverynote.esa-logistics.eu"
+)
+  ? window.location.origin
+  : "http://localhost:8080/api";
 
 const client = createApolloClient(url + "/admin/graphql");
 
