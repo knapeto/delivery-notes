@@ -16,11 +16,9 @@ import { useGetDeliveryNotesLazyQuery } from "../../@generated/hooks";
 import { useState } from "react";
 
 export const DeliveryNotesList = () => {
-  const [search, setSearch] = useState("5006905");
+  const [search, setSearch] = useState("5006905"); // 5006905
 
   const [getDeliveryNotes, { data }] = useGetDeliveryNotesLazyQuery();
-
-  console.log("data ", data);
 
   const onSubmit = async () => {
     getDeliveryNotes({

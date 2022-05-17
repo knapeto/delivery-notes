@@ -68,7 +68,7 @@ export class SharedService {
 
     res &&
       res.cookie('access_token', `${access_token}`, {
-        httpOnly: true,
+        httpOnly: false,
         secure: false,
       });
 

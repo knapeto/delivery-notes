@@ -120,8 +120,6 @@ export class DeliveryNotesResolver {
     `,
     );
 
-    console.log(result);
-
     return result;
   }
 }
