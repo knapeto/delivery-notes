@@ -14,7 +14,7 @@ dayjs.extend(utc);
 export const url = window.location.href.includes(
   "deliverynote.esa-logistics.eu"
 )
-  ? window.location.origin
+  ? `${window.location.origin}/api`
   : "http://localhost:8080/api";
 
 const client = createApolloClient(url + "/admin/graphql");
