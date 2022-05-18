@@ -57,7 +57,7 @@ export const DeliveryNotesList = () => {
       <br />
 
       <TableContainer component={Paper} style={{ maxHeight: "70vh" }}>
-        <Table>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell align="right">Klient</TableCell>
@@ -91,7 +91,7 @@ export const DeliveryNotesList = () => {
                   <a
                     target="_blank"
                     href={`${url}/admin/delivery-note/${
-                      row.CisloDL
+                      row.InterniCisloDokladuProTisk
                     }?access_token=${cookie.get("access_token")}`}
                     download
                     style={{ margin: "0 auto" }}
