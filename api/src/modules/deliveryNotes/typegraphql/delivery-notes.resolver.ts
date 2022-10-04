@@ -7,6 +7,7 @@ import {
   Resolver,
 } from 'type-graphql';
 import LfsConnection from '../../core/lfs.database';
+import IngresConnection from '../../core/ingres.database';
 
 @ObjectType()
 export class DeliveryNote {
@@ -74,8 +75,9 @@ export class DeliveryNotesResolver {
   async getDeliveryNotes(
     @Args() args: DeliveryNoteSearch,
   ): Promise<DeliveryNote[]> {
-    const connection = await LfsConnection;
-    const result: any = await connection.query(
+    const lfsConnection = await LfsConnection;
+    const ingresConnection = await IngresConnection;
+    const lfsResult: any = await lfsConnection.query(
       `
       select
         VPP.AKKONZ as "Sklad"
@@ -120,6 +122,47 @@ export class DeliveryNotesResolver {
     `,
     );
 
-    return result;
+    const ingresResult: any = await ingresConnection.query(
+      `
+      select
+        lo.cislo_skladu as Sklad
+        ,lo.cislo_majitele as Klient
+        ,trim(Kli.firma_partnera) as KlientNazev
+        ,kmf.nazev as FakturacniMistoNazev
+        ,trim(km.kod_mista) as DodaciMisto_Kod
+        ,trim(km.nazev) as DodaciMisto_Nazev
+        ,trim(km.ulice) as DodaciMisto_Ulice
+        ,trim(km.psc) as DodaciMisto_PSC
+        ,trim(km.obec) as DodaciMisto_Mesto
+        ,trim(km.kod_statu) as DodaciMisto_Zeme
+        ,trim(ld.sd) as CisloDL
+        ,trim(lo.cislo_obj_majitele) as CisloObjKlienta
+        ,trim(lo.cislo_obj_odberatele) as CisloObjZakaznika
+        ,ld.sd as InterniCisloDokladuProTisk
+        ,lo.datum_dodani as DatumDodani
+        ,cd.nazev_linky as Doprava_Linka
+        ,cd.code as Doprava_CODE
+    from
+        lst_lo lo
+        join lst_ld ld on lo.sd=ld.sd_lo and lo.datum > date('now') - date('1 month')
+        join lst_code cd on cd.sd_ld=ld.sd
+            -- klient - základní údaje
+        join obchodni_partner Kli on Kli.cislo_partnera = lo.cislo_majitele
+            -- dodací místo
+        join lsc_koncova_mista km on km.id = lo.id_mista and km.cislo_majitele = lo.cislo_majitele
+        join lsc_koncova_mista kmf on kmf.id = lo.id_mista_fakt and kmf.cislo_majitele = lo.cislo_majitele
+    where
+          ld.sd like '%' || ${args.search}  || '%' -- číslo DL
+        or lo.cislo_obj_majitele like '%' || ${args.search} || '%' -- číslo objednávky klienta
+        or lo.cislo_obj_odberatele like '%' || ${args.search} || '%' -- číslo objednávky zákazníka (odběratele))
+    order by
+        lo.datum_dodani desc
+    `,
+    );
+
+    return [
+      ...lfsResult.map((item) => ({ ...item, type: 'lfs' })),
+      ...ingresResult.map((item) => ({ ...item, type: 'ingres' })),
+    ];
   }
 }
